@@ -1,25 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yuonishi <yuonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/09 16:34:09 by yuonishi          #+#    #+#             */
-/*   Updated: 2025/11/30 13:21:17 by yuonishi         ###   ########.fr       */
+/*   Created: 2025/11/30 13:33:02 by yuonishi          #+#    #+#             */
+/*   Updated: 2025/11/30 13:33:24 by yuonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# deine GET_NEXT_LINE_H
-
-# include <stdlib.h>
-# include <unistd.h>
-# include <stddef.h>
-# include <limits.h>
-
-char	*get_next_line(int fd.);
-
-// set prototype
-
-#endif
+#include <unistd.h>
+#include <stdio.h>

@@ -1,28 +1,28 @@
-#include <unistd.h>
-#include <stdio.h>
-#include <fcntl.h>
-#include <string.h>
-#include <stdlib.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yuonishi <yuonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/30 13:37:07 by yuonishi          #+#    #+#             */
+/*   Updated: 2025/11/30 14:14:25 by yuonishi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int	main(void)
+#include "get_next_line.h"
+
+char	*get_next_line(int fd)
 {
-	int		fd;
-	char	buf[BUFFER_SIZE + 1];
-	int		bytes_read;
+	static char	*stash;
+	char		*line;
 
-	fd = open("test01.txt", O_RDONLY);
-	if (fd == -1)
-	{
-		write(2, "Error1\n", 6);
-		return (0);
-	}
-	bytes_read = read(fd, buf, BUFFER_SIZE);
-	if (bytes_read > 0)
-	{
-		buf[bytes_read] = '\0';
-		if (strchr(buf, '\n'))
-
-	}
-	close(fd);
-	return (0);
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
+	stash = read_add_to_stash(fd, stash);
+	if (!stash)
+		return (NULL);
+	line = extract_line_from_stash(stash);
+	stash = update_stash(stash);
+	return (line);
 }

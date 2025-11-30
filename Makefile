@@ -21,7 +21,7 @@ $(NAME): $(OBJS) $(MAIN_OBJ)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(MAIN_OBJ)
 
 %.o: %.c get_next_line.h
-$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	$(RM) $(OBJS) $(MAIN_OBJ)
