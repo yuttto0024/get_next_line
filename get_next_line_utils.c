@@ -6,7 +6,7 @@
 /*   By: yuonishi <yuonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/30 14:14:54 by yuonishi          #+#    #+#             */
-/*   Updated: 2025/11/30 17:34:22 by yuonishi         ###   ########.fr       */
+/*   Updated: 2025/11/30 20:00:06 by yuonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ char	*ft_strchr(const char *s, int c)
 	size_t	i;
 	char	*t;
 
+	if (s == NULL)
+		return (NULL);
 	t = (char *)s;
 	i = 0;
 	while (t[i])

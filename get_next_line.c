@@ -6,7 +6,7 @@
 /*   By: yuonishi <yuonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/30 13:37:07 by yuonishi          #+#    #+#             */
-/*   Updated: 2025/11/30 19:01:05 by yuonishi         ###   ########.fr       */
+/*   Updated: 2025/11/30 19:50:30 by yuonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*read_add_to_stash(int fd, char *stash)
 	if (buf == NULL)
 		return (NULL);
 	bytes_readed = 1;
-	while (ft_strchr(stash, '\n') != NULL && bytes_readed != 0)
+	while (ft_strchr(stash, '\n') == NULL && bytes_readed != 0)
 	{
 		bytes_readed = read(fd, buf, BUFFER_SIZE);
 		if (bytes_readed == -1)
@@ -34,7 +34,7 @@ char	*read_add_to_stash(int fd, char *stash)
 		stash = ft_strjoin_gnl(stash, buf);
 	}
 	free(buf);
-	retrun (stash);
+	return (stash);
 }
 
 char	*extract_line_from_stash(char *stash)
@@ -42,7 +42,7 @@ char	*extract_line_from_stash(char *stash)
 	char	*line;
 	size_t	i;
 
-	if (stash == NULL || stash[0] == NULL)
+	if (stash == NULL || stash[0] == '\0')
 		return (NULL);
 	i = 0;
 	while (stash[i] && stash[i] != '\n')
@@ -65,7 +65,7 @@ char	*extract_line_from_stash(char *stash)
 	return (line);
 }
 
-char	*update_stash(stash)
+char	*update_stash(char *stash)
 {
 	size_t	i;
 	char	*new_stash;
@@ -73,7 +73,7 @@ char	*update_stash(stash)
 	i = 0;
 	while (stash[i] && stash[i] != '\n')
 		i++;
-	if (stash[i] == NULL)
+	if (stash[i] == '\0')
 	{
 		free(stash);
 		return (NULL);

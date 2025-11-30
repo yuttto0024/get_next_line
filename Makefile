@@ -1,6 +1,5 @@
-Name = gnl_tester
-
-CC = CC
+NAME = get_next_line.a
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 RM = rm -f
@@ -12,13 +11,12 @@ SRCS = \
 		get_next_line.c \
 		get_next_line_utils.c \
 
-MAIN_SRC = main.c
-
 OBJS = $(SRCS:.c=.o)
-MAIN_OBJ = $(MAIN_SRC:.c=.o)
 
-$(NAME): $(OBJS) $(MAIN_OBJ)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(MAIN_OBJ)
+all: $(NAME)
+
+$(NAME): $(OBJS)
+	ar rcs $(NAME) $(OBJS)
 
 %.o: %.c get_next_line.h
 	$(CC) $(CFLAGS) -c $< -o $@
