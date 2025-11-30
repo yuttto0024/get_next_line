@@ -6,16 +6,16 @@
 /*   By: yuonishi <yuonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 16:34:09 by yuonishi          #+#    #+#             */
-/*   Updated: 2025/11/30 20:16:48 by yuonishi         ###   ########.fr       */
+/*   Updated: 2025/11/30 20:21:00 by yuonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-#ifndef GET_NEXT_LINE_H
-
-#endif
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
 # include <stdlib.h>
 # include <unistd.h>
