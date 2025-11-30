@@ -6,7 +6,7 @@
 /*   By: yuonishi <yuonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/30 13:37:07 by yuonishi          #+#    #+#             */
-/*   Updated: 2025/11/30 18:49:05 by yuonishi         ###   ########.fr       */
+/*   Updated: 2025/11/30 19:01:05 by yuonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,48 @@ char	*read_add_to_stash(int fd, char *stash)
 
 char	*extract_line_from_stash(char *stash)
 {
+	char	*line;
+	size_t	i;
 
-	
+	if (stash == NULL || stash[0] == NULL)
+		return (NULL);
+	i = 0;
+	while (stash[i] && stash[i] != '\n')
+		i++;
+	line = (char *)malloc(sizeof(char) * (i + 2));
+	if (line == NULL)
+		return (NULL);
+	i = 0;
+	while (stash[i] && stash[i] != '\n')
+	{
+		line[i] = stash[i];
+		i++;
+	}
+	if (stash[i] == '\n')
+	{
+		line[i] = '\n';
+		i++;
+	}
+	line[i] = '\0';
+	return (line);
 }
 
 char	*update_stash(stash)
 {
-	
-	
+	size_t	i;
+	char	*new_stash;
+
+	i = 0;
+	while (stash[i] && stash[i] != '\n')
+		i++;
+	if (stash[i] == NULL)
+	{
+		free(stash);
+		return (NULL);
+	}
+	new_stash = ft_strdup_gnl(&stash[i + 1]);
+	free(stash);
+	return (new_stash);
 }
 
 char	*get_next_line(int fd)
