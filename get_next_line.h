@@ -6,7 +6,7 @@
 /*   By: yuonishi <yuonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 16:34:09 by yuonishi          #+#    #+#             */
-/*   Updated: 2025/11/30 20:21:00 by yuonishi         ###   ########.fr       */
+/*   Updated: 2025/12/06 13:39:11 by yuonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 char	*get_next_line(int fd);
 size_t	ft_strlen(const char *s);
 char	*ft_strchr(const char *s, int c);
+char	*ft_realloc_stash(char *ptr, size_t new_size);
 char	*ft_strjoin_gnl(char *stash, char *buf);
 char	*ft_strdup_gnl(const char *src);
 

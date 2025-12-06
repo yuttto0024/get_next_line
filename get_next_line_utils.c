@@ -6,7 +6,7 @@
 /*   By: yuonishi <yuonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/30 14:14:54 by yuonishi          #+#    #+#             */
-/*   Updated: 2025/11/30 20:00:06 by yuonishi         ###   ########.fr       */
+/*   Updated: 2025/12/06 13:28:25 by yuonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,26 +19,24 @@ size_t	ft_strlen(const char *s)
 	i = 0;
 	while (s[i])
 		i++;
-	return (i);	
+	return (i);
 }
 
 char	*ft_strchr(const char *s, int c)
 {
 	size_t	i;
-	char	*t;
 
 	if (s == NULL)
 		return (NULL);
-	t = (char *)s;
 	i = 0;
-	while (t[i])
+	while (s[i])
 	{
 		if (s[i] == (char)c)
-			return (&t[i]);
+			return ((char *)&s[i]);
 		i++;
 	}
 	if ((char)c == '\0')
-		return (&t[i]);
+		return ((char *)&s[i]);
 	return (NULL);
 }
 
@@ -49,10 +47,7 @@ char	*ft_realloc_stash(char *ptr, size_t new_size)
 
 	new_ptr = (char *)malloc(sizeof(char) * new_size);
 	if (new_ptr == NULL)
-	{
-		free(ptr);
-		return (NULL);
-	}
+		return (free(ptr), NULL);
 	i = 0;
 	if (ptr != NULL)
 	{
