@@ -1,2 +1,4 @@
-test*.txt
+main.c
+file*.txt
+1char.txt
 a.out

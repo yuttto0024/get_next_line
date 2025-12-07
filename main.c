@@ -6,7 +6,7 @@
 /*   By: yuonishi <yuonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/30 13:33:02 by yuonishi          #+#    #+#             */
-/*   Updated: 2025/12/06 13:49:36 by yuonishi         ###   ########.fr       */
+/*   Updated: 2025/12/07 11:42:18 by yuonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,18 @@ int	main(void)
 	int		line_count;
 	char	*line;
 
-	fd = open("test01.txt", O_RDONLY);
+	fd = open("1char.txt", O_RDONLY);
 	if (fd == -1)
 	{
 		printf("Error1\n");
 		return (1);
-	}	
+	}
 	line_count = 1;
 	while (1)
 	{
 		line = get_next_line(fd);
 		if (line == NULL)
-			break;
+			break ;
 		printf("[%d]:%s", line_count, line);
 		free(line);
 		line_count++;

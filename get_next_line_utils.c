@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yuonishi <yuonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/30 14:14:54 by yuonishi          #+#    #+#             */
-/*   Updated: 2025/12/06 13:28:25 by yuonishi         ###   ########.fr       */
+/*   Created: 2025/12/07 09:46:53 by yuonishi          #+#    #+#             */
+/*   Updated: 2025/12/07 11:39:34 by yuonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,67 +40,49 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-char	*ft_realloc_stash(char *ptr, size_t new_size)
+char	*ft_realloc_gnl(char *stash, size_t old_len, size_t new_size)
 {
-	char	*new_ptr;
+	char	*new_stash;
 	size_t	i;
 
-	new_ptr = (char *)malloc(sizeof(char) * new_size);
-	if (new_ptr == NULL)
-		return (free(ptr), NULL);
+	new_stash = (char *)malloc(sizeof(char) * new_size);
+	if (!new_stash)
+		return (free(stash), NULL);
 	i = 0;
-	if (ptr != NULL)
+	if (stash)
 	{
-		while (ptr[i])
+		while (i < old_len)
 		{
-			new_ptr[i] = ptr[i];
+			new_stash[i] = stash[i];
 			i++;
 		}
-		free(ptr);
 	}
-	new_ptr[i] = '\0';
-	return (new_ptr);
+	new_stash[i] = '\0';
+	return (free(stash), new_stash);
 }
 
 char	*ft_strjoin_gnl(char *stash, char *buf)
 {
 	char	*new_stash;
-	size_t	len_stash;
-	size_t	len_buf;
+	size_t	stash_len;
+	size_t	buf_len;
 	size_t	i;
-	size_t	j;
 
-	len_stash = 0;
+	stash_len = 0;
+	buf_len = 0;
 	if (stash)
-		len_stash = ft_strlen(stash);
-	len_buf = ft_strlen(buf);
-	new_stash = ft_realloc_stash(stash, len_stash + len_buf + 1);
-	if (new_stash == NULL)
-		return (NULL);
-	i = len_stash;
-	j = 0;
-	while (buf[j])
-		new_stash[i++] = buf[j++];
-	new_stash[i] = '\0';
-	return (new_stash);
-}
-
-char	*ft_strdup_gnl(const char *src)
-{
-	char	*dest;
-	size_t	len;
-	size_t	i;
-
-	len = ft_strlen(src);
-	dest = (char *)malloc(sizeof(char) * (len + 1));
-	if (dest == NULL)
+		stash_len = ft_strlen(stash);
+	if (buf)
+		buf_len = ft_strlen(buf);
+	new_stash = ft_realloc_gnl(stash, stash_len, stash_len + buf_len + 1);
+	if (!new_stash)
 		return (NULL);
 	i = 0;
-	while (src[i])
+	while (i < buf_len)
 	{
-		dest[i] = src[i];
+		new_stash[stash_len + i] = buf[i];
 		i++;
 	}
-	dest[i] = '\0';
-	return (dest);
+	new_stash[stash_len + i] = '\0';
+	return (new_stash);
 }
