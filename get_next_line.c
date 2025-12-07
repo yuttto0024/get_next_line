@@ -6,7 +6,7 @@
 /*   By: yuonishi <yuonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/07 09:12:32 by yuonishi          #+#    #+#             */
-/*   Updated: 2025/12/07 12:02:46 by yuonishi         ###   ########.fr       */
+/*   Updated: 2025/12/07 12:38:46 by yuonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,7 @@ static char	*extract_line(char *stash)
 static char	*update_stash(char *stash)
 {
 	char	*new_stash;
-	size_t	i;	// if (stash[0] == '\0')
-	// 	(free(stash));
+	size_t	i;
 	size_t	j;
 
 	i = 0;
@@ -105,7 +104,5 @@ char	*get_next_line(int fd)
 		return (NULL);
 	}
 	stash = update_stash(stash);
-	// if (stash[0] == '\0')
-	// 	(free(stash));
 	return (line);
 }
